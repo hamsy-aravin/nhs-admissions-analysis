@@ -1,0 +1,12 @@
+**/.DS_Store
+*.pyc
+__pycache__/
+.ipynb_checkpoints/
+*.csv
+*.db
+.env
+*.pem
+*.key
+venv/
+.env.local
+mlruns/
