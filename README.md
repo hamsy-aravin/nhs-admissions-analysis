@@ -209,20 +209,19 @@ Examples of high-volume diagnoses:
 
 ### Emergency Admission Rate by Deprivation
 
-![Deprivation Analysis](outputs/charts/deprivation_emergency_rate.png)
+![Deprivation Analysis](./outputs/charts/deprivation_emergency_rate.png)
 
 ### Top Diagnoses by Admission Volume
 
-![Top Diagnoses](outputs/charts/top_diagnoses.png)
+![Top Diagnoses](./outputs/charts/top_diagnoses.png)
 
 ### Monthly Admissions by Type
 
-![Monthly Trends](outputs/charts/monthly_trends.png)
+![Monthly Trends](./outputs/charts/monthly_trends.png)
 
 ### Diagnoses with Longest Average Length of Stay
 
-![Length of Stay](outputs/charts/length_of_stay.png)
-
+![Length of Stay](./outputs/charts/length_of_stay.png)
 ---
 
 ## Running the Project
