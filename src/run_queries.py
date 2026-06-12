@@ -41,8 +41,18 @@ def run_all_queries():
 
     for name, filepath in query_files:
         print(f"Running {name}...")
+
         df = run_query(conn, filepath)
+
         results[name] = df
+
+        os.makedirs("outputs/tableau", exist_ok=True)
+
+        df.to_csv(
+        f"outputs/tableau/{name}.csv",
+        index=False
+        )
+
         print(f"Returned {len(df)} rows.")
 
     conn.close()
