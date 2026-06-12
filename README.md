@@ -30,6 +30,9 @@ Interactive dashboard built using Tableau Public from SQL outputs generated from
 
 ![Tableau Dashboard](images/tableau_dashboard.png)
 
+**Interactive Dashboard:**  
+https://public.tableau.com/app/profile/your-profile/viz/NHSHospitalAdmissionsDashboard
+
 ### Dashboard Features
 
 - Emergency admission rates by deprivation decile
@@ -276,21 +279,11 @@ nhs-admissions-analysis/
 
 ---
 
-## Future Improvements
-
-- Streamlit dashboard
-- NHS Open Data integration
-- Predictive modelling for length of stay
-- Docker deployment
-- Airflow ETL orchestration
-- Interactive cloud-hosted dashboard
-
----
 
 ## Author
 
 **Hamsathvani Aravinthan**
 
-Credit Strategy Analyst | BSc Biochemistry | Aspiring Bioinformatician & Data Scientist
+MSc Bioinformatics | BSc Biochemistry | Aspiring Bioinformatician & Data Scientist
 
 **Skills:** SQL • PostgreSQL • AWS • Python • Tableau • Data Engineering • Healthcare Analytics
