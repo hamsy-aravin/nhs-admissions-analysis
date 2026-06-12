@@ -215,11 +215,11 @@ Examples of high-volume diagnoses:
 
 ![Top Diagnoses](outputs/charts/top_diagnoses.png)
 
-### Monthly Admission Trends
+### Monthly Admissions by Type
 
 ![Monthly Trends](outputs/charts/monthly_trends.png)
 
-### Length of Stay by Diagnosis
+### Diagnoses with Longest Average Length of Stay
 
 ![Length of Stay](outputs/charts/length_of_stay.png)
 
