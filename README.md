@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project simulates a real-world NHS healthcare analytics workflow using SQL, PostgreSQL, AWS RDS, and Python. A synthetic dataset modelled on NHS Hospital Episode Statistics (HES) was generated and loaded into a cloud-hosted PostgreSQL database. Analytical SQL queries were then used to investigate admission patterns, healthcare inequalities, diagnosis prevalence, and length-of-stay metrics.
+This project simulates a real-world NHS healthcare analytics workflow using SQL, PostgreSQL, AWS RDS, Python, and Tableau. A synthetic dataset modelled on NHS Hospital Episode Statistics (HES) was generated and loaded into a cloud-hosted PostgreSQL database. Analytical SQL queries were then used to investigate admission patterns, healthcare inequalities, diagnosis prevalence, and length-of-stay metrics.
 
-The project demonstrates end-to-end data engineering and analytics skills, including database design, cloud deployment, SQL analysis, automated data loading, and data visualisation.
+The project demonstrates end-to-end data engineering and analytics skills, including database design, cloud deployment, SQL analysis, automated data loading, dashboard development, and data visualisation.
 
 ---
 
@@ -16,10 +16,28 @@ The project demonstrates end-to-end data engineering and analytics skills, inclu
 - Python
 - pandas
 - matplotlib
+- Tableau Public
 - psycopg2
 - Docker
 - Git & GitHub
 - pytest
+
+---
+
+## Tableau Dashboard
+
+Interactive dashboard built using Tableau Public from SQL outputs generated from PostgreSQL hosted on AWS RDS.
+
+![Tableau Dashboard](images/tableau_dashboard.png)
+
+### Dashboard Features
+
+- Emergency admission rates by deprivation decile
+- Monthly admission trends by admission type
+- Top diagnoses by admission volume
+- Average length of stay by diagnosis
+- Healthcare inequality analysis
+- Interactive dashboard reporting
 
 ---
 
@@ -33,64 +51,12 @@ Synthetic Data Generation
             ↓
        SQL Analysis
             ↓
-      Python Analytics
+      Python ETL
             ↓
-      Visualisations
+      Tableau Dashboard
             ↓
     GitHub Portfolio
 ```
-
----
-
-## Database Schema
-
-The database consists of four relational tables:
-
-### Patients
-
-Stores demographic and socioeconomic information.
-
-| Column | Description |
-|----------|-------------|
-| patient_id | Unique patient identifier |
-| age | Patient age |
-| sex | Male/Female |
-| region | NHS region |
-| deprivation_decile | Index of Multiple Deprivation decile |
-
-### Admissions
-
-Stores hospital admission events.
-
-| Column | Description |
-|----------|-------------|
-| admission_id | Unique admission identifier |
-| patient_id | Foreign key to patients |
-| admission_date | Admission date |
-| discharge_date | Discharge date |
-| admission_type | Emergency, Elective, Maternity, Other |
-
-### Diagnoses
-
-Stores ICD-10 diagnosis records.
-
-| Column | Description |
-|----------|-------------|
-| diagnosis_id | Unique diagnosis identifier |
-| admission_id | Foreign key to admissions |
-| icd10_code | ICD-10 diagnosis code |
-| diagnosis_desc | Diagnosis description |
-| is_primary | Primary diagnosis indicator |
-
-### Treatments
-
-Stores treatment information.
-
-| Column | Description |
-|----------|-------------|
-| treatment_id | Unique treatment identifier |
-| admission_id | Foreign key to admissions |
-| treatment_name | Treatment description |
 
 ---
 
@@ -105,16 +71,61 @@ Stores treatment information.
 
 ---
 
-## Analytical Questions
+## Key Findings
 
-This project investigates:
+### Healthcare Inequality
 
-- Which diagnoses account for the largest admission burden?
-- How does length of stay vary by diagnosis?
-- How do emergency admission rates vary by deprivation level?
-- Are there observable seasonal trends in admissions?
-- Which diagnoses are most likely to result in same-day discharge?
-- Which diagnoses have the longest average hospital stay?
+Emergency admission rates showed a strong deprivation gradient:
+
+| Deprivation Decile | Emergency Admission Rate (%) |
+|--------------------|-----------------------------:|
+| 1 (Most Deprived) | 54.8 |
+| 10 (Least Deprived) | 24.9 |
+
+**Key Result**
+
+> Emergency admission rates were 29.9 percentage points higher in the most deprived decile compared with the least deprived decile.
+
+### Diagnoses with Longest Average Length of Stay
+
+| Diagnosis | Average LOS (Days) |
+|------------|-------------------:|
+| Depressive Episode | 25.6 |
+| Fracture of Femur | 17.9 |
+| Cerebral Infarction | 12.4 |
+| Sepsis | 11.5 |
+| Malignant Neoplasm of Bronchus | 10.0 |
+
+### Most Common Diagnoses
+
+Examples of high-volume diagnoses:
+
+- COPD
+- Fracture of Femur
+- Heart Failure
+- Lung Cancer
+- Stroke
+- Pneumonia
+
+---
+
+## Visualisations
+
+### Emergency Admission Rate by Deprivation
+
+![Deprivation Analysis](./outputs/charts/deprivation_emergency_rate.png)
+
+### Top Diagnoses by Admission Volume
+
+![Top Diagnoses](./outputs/charts/top_diagnoses.png)
+
+### Monthly Admissions by Type
+
+![Monthly Trends](./outputs/charts/monthly_trends.png)
+
+### Diagnoses with Longest Average Length of Stay
+
+![Length of Stay](./outputs/charts/length_of_stay.png)
 
 ---
 
@@ -163,73 +174,12 @@ WITHIN GROUP (
 
 ---
 
-## Key Findings
-
-### Healthcare Inequality
-
-Emergency admission rates showed a strong deprivation gradient:
-
-| Deprivation Decile | Emergency Admission Rate (%) |
-|--------------------|-----------------------------:|
-| 1 (Most Deprived) | 54.8 |
-| 10 (Least Deprived) | 24.9 |
-
-**Key Result**
-
-> Emergency admission rates were 29.9 percentage points higher in the most deprived decile compared with the least deprived decile.
-
----
-
-### Diagnoses with Longest Average Length of Stay
-
-| Diagnosis | Average LOS (Days) |
-|------------|-------------------:|
-| Depressive Episode | 25.6 |
-| Fracture of Femur | 17.9 |
-| Cerebral Infarction | 12.4 |
-| Sepsis | 11.5 |
-| Malignant Neoplasm of Bronchus | 10.0 |
-
----
-
-### Most Common Diagnoses
-
-Examples of high-volume diagnoses:
-
-- COPD
-- Fracture of Femur
-- Heart Failure
-- Lung Cancer
-- Stroke
-- Pneumonia
-
----
-
-## Visualisations
-
-### Emergency Admission Rate by Deprivation
-
-![Deprivation Analysis](./outputs/charts/deprivation_emergency_rate.png)
-
-### Top Diagnoses by Admission Volume
-
-![Top Diagnoses](./outputs/charts/top_diagnoses.png)
-
-### Monthly Admissions by Type
-
-![Monthly Trends](./outputs/charts/monthly_trends.png)
-
-### Diagnoses with Longest Average Length of Stay
-
-![Length of Stay](./outputs/charts/length_of_stay.png)
----
-
 ## Running the Project
 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/nhs-admissions-analysis.git
+git clone https://github.com/hamsy-aravin/nhs-admissions-analysis.git
 cd nhs-admissions-analysis
 ```
 
@@ -263,6 +213,12 @@ python src/load_data.py
 python src/run_queries.py
 ```
 
+### Generate Visualisations
+
+```bash
+python src/create_charts.py
+```
+
 ---
 
 ## Project Structure
@@ -270,10 +226,16 @@ python src/run_queries.py
 ```text
 nhs-admissions-analysis/
 │
-├── data/
-├── notebooks/
+├── images/
+│   └── tableau_dashboard.png
+│
+├── tableau/
+│   └── nhs_hospital_admissions_dashboard.twbx
+│
 ├── outputs/
-│   └── charts/
+│   ├── charts/
+│   └── tableau/
+│
 ├── sql/
 │   ├── schema.sql
 │   ├── 01_top_diagnoses.sql
@@ -286,7 +248,8 @@ nhs-admissions-analysis/
 ├── src/
 │   ├── generate_data.py
 │   ├── load_data.py
-│   └── run_queries.py
+│   ├── run_queries.py
+│   └── create_charts.py
 │
 ├── tests/
 ├── requirements.txt
@@ -302,6 +265,8 @@ nhs-admissions-analysis/
 - PostgreSQL Administration
 - AWS RDS Deployment
 - SQL Analytics
+- Advanced SQL Window Functions
+- Tableau Dashboard Development
 - Data Engineering
 - Python Data Analysis
 - Healthcare Analytics
@@ -318,7 +283,7 @@ nhs-admissions-analysis/
 - Predictive modelling for length of stay
 - Docker deployment
 - Airflow ETL orchestration
-- Healthcare KPI dashboard
+- Interactive cloud-hosted dashboard
 
 ---
 
@@ -328,4 +293,4 @@ nhs-admissions-analysis/
 
 Credit Strategy Analyst | BSc Biochemistry | Aspiring Bioinformatician & Data Scientist
 
-**Skills:** SQL • PostgreSQL • AWS • Python • Data Engineering • Healthcare Analytics
+**Skills:** SQL • PostgreSQL • AWS • Python • Tableau • Data Engineering • Healthcare Analytics
