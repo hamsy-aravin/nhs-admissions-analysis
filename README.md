@@ -31,7 +31,7 @@ Interactive dashboard built using Tableau Public from SQL outputs generated from
 ![Tableau Dashboard](images/tableau_dashboard.png)
 
 **Interactive Dashboard:**  
-https://public.tableau.com/app/profile/your-profile/viz/NHSHospitalAdmissionsDashboard
+https://public.tableau.com/views/NHSHospitalAdmissionsAnalyticsDashboard/Dashboard1?:language=en-GB&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
 
 ### Dashboard Features
 
